@@ -1,22 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://nlu5a87b37m7"]
+[gd_scene load_steps=4 format=3 uid="uid://qunr0qvamm83"]
 
-[ext_resource type="Texture2D" uid="uid://bqq0ldxat5ite" path="res://Assets/Player_t.png" id="1_g6cee"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_l51tj"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_hgdft"]
+[ext_resource type="Texture2D" uid="uid://bqq0ldxat5ite" path="res://Assets/Player_t.png" id="2_k7u83"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_epsgs"]
-size = Vector3(1.55054, 1.14857, 0.322903)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_begjn"]
+size = Vector2(72, 78)
 
-[node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_l51tj")
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_hgdft")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-texture = ExtResource("1_g6cee")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_begjn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132255, 0)
-shape = SubResource("BoxShape3D_epsgs")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32041, 0)
-current = true
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_k7u83")
