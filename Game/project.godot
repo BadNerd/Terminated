@@ -17,4 +17,4 @@ config/icon="res://icon.svg"
 
 [editor]
 
-movie_writer/movie_file="/home/r9_dev/Documents/Pizza-Jam-2023-Game/Videos/2D Test.avi"
+movie_writer/movie_file="/home/r9_dev/Documents/Pizza-Jam-2023-Game/Videos/Death.avi"

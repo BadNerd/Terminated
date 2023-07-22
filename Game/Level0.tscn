@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://wv5pghn66j77"]
+[gd_scene load_steps=5 format=3 uid="uid://wv5pghn66j77"]
 
 [ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="1_qf3ro"]
+[ext_resource type="PackedScene" uid="uid://dl5x2k4e41gfo" path="res://Enemy/Enemy.tscn" id="2_ehprl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cbmhu"]
 
@@ -22,3 +23,6 @@ shape = SubResource("RectangleShape2D_oo2ch")
 
 [node name="Player" parent="." instance=ExtResource("1_qf3ro")]
 position = Vector2(50, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("2_ehprl")]
+position = Vector2(200, 0)
