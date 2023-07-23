@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgbvunwlks07"]
+
+[ext_resource type="Script" path="res://Player/Rocket/Rocket.gd" id="1_omn15"]
+[ext_resource type="Texture2D" uid="uid://2spbf80qhgn5" path="res://Assets/Rocket_player.png" id="2_yboyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jruow"]
+size = Vector2(164, 131)
+
+[node name="Rocket" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_omn15")
+
+[node name="RocketPlayer" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_yboyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -19.5)
+shape = SubResource("RectangleShape2D_jruow")
