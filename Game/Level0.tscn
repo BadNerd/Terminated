@@ -1,29 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://wv5pghn66j77"]
+[gd_scene load_steps=11 format=3 uid="uid://wv5pghn66j77"]
 
-[ext_resource type="Texture2D" uid="uid://b6ieaedq5e3fp" path="res://Assets/BG.png" id="1_mivsl"]
 [ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="1_qf3ro"]
 [ext_resource type="Script" path="res://Level0.gd" id="1_ybr7x"]
 [ext_resource type="PackedScene" uid="uid://dl5x2k4e41gfo" path="res://Enemy/Enemy.tscn" id="2_ehprl"]
+[ext_resource type="Texture2D" uid="uid://iyi2enag8n5w" path="res://Assets/FullBackground.png" id="2_momax"]
+[ext_resource type="PackedScene" uid="uid://3g5txlnau6ok" path="res://UI/Platform.tscn" id="3_uxw0e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cbmhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo2ch"]
-size = Vector2(1166, 20)
+size = Vector2(2335, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_arfah"]
-size = Vector2(122.5, 29)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdcki"]
+size = Vector2(92, 827)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nyw4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gvob"]
+size = Vector2(51, 128.5)
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_ybr7x")
 
-[node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(575, 321)
-scale = Vector2(1.85, 1.85)
-texture = ExtResource("1_mivsl")
+[node name="BG1" type="Sprite2D" parent="."]
+position = Vector2(575, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_momax")
+
+[node name="BG2" type="Sprite2D" parent="."]
+position = Vector2(-605, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_momax")
 
 [node name="Level" type="Node" parent="."]
 
-[node name="Floor" type="StaticBody2D" parent="Level"]
+[node name="Floor" type="Area2D" parent="Level"]
 position = Vector2(4, -77)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Floor"]
@@ -33,32 +44,77 @@ scale = Vector2(1156, 19)
 mesh = SubResource("BoxMesh_cbmhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor"]
-position = Vector2(573, 650)
+position = Vector2(-14, 797)
 shape = SubResource("RectangleShape2D_oo2ch")
 
-[node name="Platforms" type="StaticBody2D" parent="Level"]
+[node name="Platform" type="Node" parent="Level"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Platforms"]
-position = Vector2(358.25, 482.5)
-shape = SubResource("RectangleShape2D_arfah")
+[node name="Platform" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(465, 422)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Platforms"]
-position = Vector2(685, 406)
-shape = SubResource("RectangleShape2D_arfah")
+[node name="Platform2" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(623, 345)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/Platforms"]
-position = Vector2(897, 498)
-shape = SubResource("RectangleShape2D_arfah")
+[node name="Platform3" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(812, 449)
+
+[node name="Platform4" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(201, 388)
+
+[node name="Platform5" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(-63, 369)
+
+[node name="Platform6" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(-303, 414)
+
+[node name="Platform7" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(-474, 358)
+
+[node name="Platform8" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(-634, 291)
+
+[node name="Platform9" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(-850, 310)
+
+[node name="Platform10" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+position = Vector2(-1069, 342)
+
+[node name="Borders" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(-1171, 326)
+shape = SubResource("RectangleShape2D_xdcki")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(1136, 334)
+shape = SubResource("RectangleShape2D_xdcki")
+
+[node name="Exit" type="Area2D" parent="Level"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Exit"]
+position = Vector2(-1061.87, 260.875)
+scale = Vector2(49.7499, 121.75)
+mesh = SubResource("BoxMesh_nyw4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Exit"]
+position = Vector2(-1065, 260)
+shape = SubResource("RectangleShape2D_3gvob")
 
 [node name="Player" parent="." instance=ExtResource("1_qf3ro")]
-position = Vector2(50, 300)
+position = Vector2(811, 369)
 
 [node name="Enemy" parent="." instance=ExtResource("2_ehprl")]
 position = Vector2(200, 300)
 
-[node name="Bar" type="ProgressBar" parent="."]
-offset_left = 983.0
-offset_top = 2.0
-offset_right = 1148.0
-offset_bottom = 38.0
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Bar" type="ProgressBar" parent="Camera2D"]
+offset_left = 980.0
+offset_top = 6.0
+offset_right = 1145.0
+offset_bottom = 42.0
 rounded = true
+
+[connection signal="body_entered" from="Level/Floor" to="." method="_on_floor_body_entered"]
+[connection signal="body_entered" from="Level/Exit" to="." method="_on_exit_body_entered"]
