@@ -63,10 +63,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
 
-[node name="Pizza" type="Sprite2D" parent="."]
-position = Vector2(574, 241)
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 556.0
+offset_top = 220.0
+offset_right = 596.0
+offset_bottom = 260.0
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_kgjyg")
+texture_normal = ExtResource("2_kgjyg")
+texture_pressed = ExtResource("2_kgjyg")
+texture_hover = ExtResource("2_kgjyg")
+texture_disabled = ExtResource("2_kgjyg")
+texture_focused = ExtResource("2_kgjyg")
 
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

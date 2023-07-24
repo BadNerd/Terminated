@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://bh7wtcmp5qekv"]
+
+[ext_resource type="Script" path="res://Level0.gd" id="1_ohqep"]
+[ext_resource type="Texture2D" uid="uid://iyi2enag8n5w" path="res://Assets/FullBackground.png" id="2_rkerm"]
+[ext_resource type="PackedScene" uid="uid://3g5txlnau6ok" path="res://UI/Platform.tscn" id="3_v76p5"]
+[ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="4_0m42w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbmhu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo2ch"]
+size = Vector2(2335, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nyw4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gvob"]
+size = Vector2(51, 128.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdcki"]
+size = Vector2(92, 827)
+
+[node name="Level0" type="Node2D"]
+script = ExtResource("1_ohqep")
+
+[node name="BG1" type="Sprite2D" parent="."]
+position = Vector2(575, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_rkerm")
+
+[node name="BG2" type="Sprite2D" parent="."]
+position = Vector2(-605, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_rkerm")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Floor" type="Area2D" parent="Level"]
+position = Vector2(4, -77)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Floor"]
+visible = false
+position = Vector2(573, 649.5)
+scale = Vector2(1156, 19)
+mesh = SubResource("BoxMesh_cbmhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor"]
+position = Vector2(-14, 797)
+shape = SubResource("RectangleShape2D_oo2ch")
+
+[node name="Exit" type="Area2D" parent="Level"]
+position = Vector2(64, 146)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Exit"]
+position = Vector2(-1061.87, 260.875)
+scale = Vector2(49.7499, 121.75)
+mesh = SubResource("BoxMesh_nyw4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Exit"]
+position = Vector2(-1065, 260)
+shape = SubResource("RectangleShape2D_3gvob")
+
+[node name="Platform" type="Node" parent="Level"]
+
+[node name="Platform" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(914, 435)
+
+[node name="Platform2" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(717, 381)
+
+[node name="Platform3" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(361, 511)
+
+[node name="Platform4" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(-268, 575)
+
+[node name="Platform5" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(82, 533)
+
+[node name="Platform6" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(-140, 435)
+
+[node name="Platform7" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(-417, 454)
+
+[node name="Platform8" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(-569, 359)
+
+[node name="Platform9" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(-769, 508)
+
+[node name="Platform10" parent="Level/Platform" instance=ExtResource("3_v76p5")]
+position = Vector2(-998, 486)
+
+[node name="Borders" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(-1171, 326)
+shape = SubResource("RectangleShape2D_xdcki")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(1136, 334)
+shape = SubResource("RectangleShape2D_xdcki")
+
+[node name="Player" parent="." instance=ExtResource("4_0m42w")]
+position = Vector2(919, 363)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Bar" type="ProgressBar" parent="Camera2D"]
+offset_left = 980.0
+offset_top = 6.0
+offset_right = 1145.0
+offset_bottom = 42.0
+rounded = true
+
+[connection signal="body_entered" from="Level/Floor" to="." method="_on_floor_body_entered"]
+[connection signal="body_entered" from="Level/Exit" to="." method="_on_exit_body_entered"]
