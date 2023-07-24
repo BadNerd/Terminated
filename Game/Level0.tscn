@@ -74,7 +74,7 @@ position = Vector2(-474, 358)
 position = Vector2(-634, 291)
 
 [node name="Platform9" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
-position = Vector2(-850, 310)
+position = Vector2(-847, 374)
 
 [node name="Platform10" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
 position = Vector2(-1069, 342)
@@ -105,6 +105,10 @@ position = Vector2(811, 369)
 
 [node name="Enemy" parent="." instance=ExtResource("2_ehprl")]
 position = Vector2(200, 300)
+shoots = false
+
+[node name="Enemy2" parent="." instance=ExtResource("2_ehprl")]
+position = Vector2(-843, 273)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

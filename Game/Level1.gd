@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var level_end = -1223
+@export var level_end = -2392
 var r_preload = preload("res://Player/Rocket/Rocket.tscn")
 
 func _input(event):
@@ -12,7 +12,7 @@ func _input(event):
 		add_child(r)
 
 func _process(delta):
-	$Camera2D.position.x = min($Player.position.x-200, 0)
+	$Camera2D.position.x = min($Player.position.x-100, 0)
 	$Camera2D/Bar.value = $Player.health
 
 func _on_floor_body_entered(body):

@@ -1,6 +1,7 @@
 extends Node
 
 var level: int = 0
+var health: int = 100
 const max_level: int = 1
 
 func teleport_level():

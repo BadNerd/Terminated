@@ -1,7 +1,8 @@
 extends Control
 
 func _on_replay_pressed():
-	get_tree().change_scene_to_file("res://Level0.tscn")
+	Global.level = 0
+	Global.teleport_level()
 
 func _on_exit_pressed():
 	get_tree().quit()
