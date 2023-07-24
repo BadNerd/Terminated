@@ -29,8 +29,15 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _on_area_2d_body_entered(body):
+	if body.name == "Enemy":
+		health -= 5
+		print(health)
 
 func _on_area_2d_area_entered(area):
+	if area.name == "Enemy":
+		health -= 5
+		print(health)
 	if area.name == "EnemyLeft":
 		health -= 5
 		print(health)

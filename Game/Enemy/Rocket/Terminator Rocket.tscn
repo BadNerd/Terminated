@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxr4dgnd3hjw5"]
+
+[ext_resource type="Script" path="res://Enemy/Rocket/Terminator Rocket.gd" id="1_gp20x"]
+[ext_resource type="Texture2D" uid="uid://cxaf52pnr0tdb" path="res://Assets/Terminator_Rocket.png" id="2_p0pis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e20wd"]
+size = Vector2(168, 78)
+
+[node name="Terminator Rocket" type="Area2D"]
+script = ExtResource("1_gp20x")
+
+[node name="TerminatorRocket" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_p0pis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_e20wd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

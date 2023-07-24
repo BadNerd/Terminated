@@ -13,5 +13,8 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Enemy":
 		body.queue_free()
 		queue_free()
+	if body.name == "Terminator Rocket":
+		body.queue_free()
+		queue_free()
 	if body.name == "Player": #or body.name == "Platforms":
 		queue_free()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxk2xwyeqtr1b"]
+[gd_scene load_steps=3 format=3 uid="uid://cxk2xwyeqtr1b"]
 
 [ext_resource type="Script" path="res://UI/Win.gd" id="1_482pa"]
+[ext_resource type="Texture2D" uid="uid://chmucpovxr3u2" path="res://Assets/Pizza.png" id="2_kgjyg"]
 
 [node name="Win" type="Control"]
 layout_mode = 3
@@ -29,8 +30,7 @@ grow_vertical = 2
 text = "You Win!
 
 Here is a Pizza For you!
-
-*No Pizza. Sorry!*"
+"
 horizontal_alignment = 1
 
 [node name="Replay" type="Button" parent="."]
@@ -62,6 +62,11 @@ offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
+
+[node name="Pizza" type="Sprite2D" parent="."]
+position = Vector2(574, 241)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_kgjyg")
 
 [connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
