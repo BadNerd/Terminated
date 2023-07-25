@@ -21,12 +21,7 @@ func _process(delta):
 func _physics_process(delta):
 	if not is_on_floor() and not editing:
 		velocity.y += gravity * delta
-	move_and_slide()
-
-func _input(event):
-	if editing and event.is_action_pressed("ui_rightclick"):
-		print(int(shoots))
-		shoots = not shoots
+		move_and_slide()
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
@@ -40,3 +35,7 @@ func _on_timer_timeout():
 	spawn_rocket()
 	$Timer.wait_time = rng.randi_range(5, 20)
 	$Timer.start()
+
+func _on_texture_button_pressed():
+	print(int(shoots))
+	shoots = not shoots

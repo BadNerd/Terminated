@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0ox8i8m2g65t"]
+[gd_scene load_steps=7 format=3 uid="uid://c0ox8i8m2g65t"]
 
 [ext_resource type="Script" path="res://Editor/Editor.gd" id="1_n6b47"]
 [ext_resource type="Texture2D" uid="uid://bryr8sh3soqm1" path="res://Assets/Platform.png" id="1_pih7n"]
+[ext_resource type="Texture2D" uid="uid://iyi2enag8n5w" path="res://Assets/FullBackground.png" id="2_atdkf"]
 [ext_resource type="Texture2D" uid="uid://daxgep6i54i7n" path="res://Assets/TerminatorEnemyButton.png" id="2_j2nte"]
 [ext_resource type="PackedScene" uid="uid://bws8rm8ccbh50" path="res://Editor/Level.tscn" id="3_i2ay7"]
+[ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="5_dud7t"]
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -17,35 +19,53 @@ script = ExtResource("1_n6b47")
 metadata/_edit_use_anchors_ = true
 
 [node name="Level0" parent="." instance=ExtResource("3_i2ay7")]
+visible = false
 editing = true
 
 [node name="Blocks" type="Node" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 609.0
-offset_right = 91.0
-offset_bottom = 649.0
+[node name="Player" parent="." instance=ExtResource("5_dud7t")]
+position = Vector2(880, 341)
+editing = true
+
+[node name="BGS" type="Node2D" parent="."]
+
+[node name="BG1" type="Sprite2D" parent="BGS"]
+position = Vector2(575, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_atdkf")
+
+[node name="BG2" type="Sprite2D" parent="BGS"]
+position = Vector2(-605, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_atdkf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, -5)
+anchor_mode = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+offset_top = 600.0
+offset_right = 87.0
+offset_bottom = 640.0
 color = Color(0.392157, 0.392157, 0.392157, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/ColorRect"]
 layout_mode = 0
 offset_right = 399.0
 offset_bottom = 41.0
 scale = Vector2(1.3, 1.3)
 
-[node name="Terminator" type="Button" parent="ColorRect/HBoxContainer"]
+[node name="Terminator" type="Button" parent="Camera2D/ColorRect/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("2_j2nte")
 icon_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/HBoxContainer"]
+[node name="Button" type="Button" parent="Camera2D/ColorRect/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("1_pih7n")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(571, 319)
-
-[connection signal="pressed" from="ColorRect/HBoxContainer/Terminator" to="." method="_on_terminator_pressed"]
-[connection signal="pressed" from="ColorRect/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Camera2D/ColorRect/HBoxContainer/Terminator" to="." method="_on_terminator_pressed"]
+[connection signal="pressed" from="Camera2D/ColorRect/HBoxContainer/Button" to="." method="_on_button_pressed"]

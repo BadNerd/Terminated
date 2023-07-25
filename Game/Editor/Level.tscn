@@ -16,7 +16,7 @@ size = Vector2(92, 827)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo2ch"]
 size = Vector2(2335, 20)
 
-[node name="Level0" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_4t71u")
 
 [node name="BG1" type="Sprite2D" parent="."]
