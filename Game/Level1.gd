@@ -12,6 +12,9 @@ func _input(event):
 		add_child(r)
 
 func _process(delta):
+	get_tree().paused = Global.paused
+	if Input.is_action_just_pressed("ui_cancel"):
+		Global.paused = not Global.paused
 	$Camera2D.position.x = min($Player.position.x-100, 0)
 	$Camera2D/Bar.value = $Player.health
 

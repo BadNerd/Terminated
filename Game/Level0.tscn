@@ -32,73 +32,73 @@ position = Vector2(-605, 320)
 scale = Vector2(3.8, 3.8)
 texture = ExtResource("2_momax")
 
-[node name="Level" type="Node" parent="."]
-
-[node name="Floor" type="Area2D" parent="Level"]
+[node name="Floor" type="Area2D" parent="."]
 position = Vector2(4, -77)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Floor"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Floor"]
 visible = false
 position = Vector2(573, 649.5)
 scale = Vector2(1156, 19)
 mesh = SubResource("BoxMesh_cbmhu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(-14, 797)
 shape = SubResource("RectangleShape2D_oo2ch")
 
-[node name="Platform" type="Node" parent="Level"]
-
-[node name="Platform" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform2" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(465, 422)
 
-[node name="Platform2" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform3" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(623, 345)
 
-[node name="Platform3" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform4" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(812, 449)
 
-[node name="Platform4" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform5" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(201, 388)
 
-[node name="Platform5" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform6" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(-63, 369)
 
-[node name="Platform6" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform7" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(-303, 414)
 
-[node name="Platform7" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform8" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(-474, 358)
 
-[node name="Platform8" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform9" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(-634, 291)
 
-[node name="Platform9" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform10" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(-847, 374)
 
-[node name="Platform10" parent="Level/Platform" instance=ExtResource("3_uxw0e")]
+[node name="Platform11" parent="." instance=ExtResource("3_uxw0e")]
 position = Vector2(-1069, 342)
 
-[node name="Borders" type="StaticBody2D" parent="Level"]
+[node name="Borders" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders"]
 position = Vector2(-1171, 326)
 shape = SubResource("RectangleShape2D_xdcki")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders"]
 position = Vector2(1136, 334)
 shape = SubResource("RectangleShape2D_xdcki")
 
-[node name="Exit" type="Area2D" parent="Level"]
+[node name="Exit" type="Area2D" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Exit"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Exit"]
 position = Vector2(-1061.87, 260.875)
 scale = Vector2(49.7499, 121.75)
 mesh = SubResource("BoxMesh_nyw4m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Exit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2(-1065, 260)
 shape = SubResource("RectangleShape2D_3gvob")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Platform" type="Node" parent="Level"]
 
 [node name="Player" parent="." instance=ExtResource("1_qf3ro")]
 position = Vector2(811, 369)
@@ -120,5 +120,5 @@ offset_right = 1145.0
 offset_bottom = 42.0
 rounded = true
 
-[connection signal="body_entered" from="Level/Floor" to="." method="_on_floor_body_entered"]
-[connection signal="body_entered" from="Level/Exit" to="." method="_on_exit_body_entered"]
+[connection signal="body_entered" from="Floor" to="." method="_on_floor_body_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

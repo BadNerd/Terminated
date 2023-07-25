@@ -19,6 +19,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and (jump_count < 2 or is_on_floor()):
 		jump_count += 1
 		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_end"):
+		Global.paused = not Global.paused
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")

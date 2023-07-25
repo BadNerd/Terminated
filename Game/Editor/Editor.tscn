@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0ox8i8m2g65t"]
+
+[ext_resource type="Script" path="res://Editor/Editor.gd" id="1_n6b47"]
+[ext_resource type="Texture2D" uid="uid://bryr8sh3soqm1" path="res://Assets/Platform.png" id="1_pih7n"]
+[ext_resource type="Texture2D" uid="uid://daxgep6i54i7n" path="res://Assets/TerminatorEnemyButton.png" id="2_j2nte"]
+[ext_resource type="PackedScene" uid="uid://bws8rm8ccbh50" path="res://Editor/Level.tscn" id="3_i2ay7"]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n6b47")
+metadata/_edit_use_anchors_ = true
+
+[node name="Level0" parent="." instance=ExtResource("3_i2ay7")]
+editing = true
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 609.0
+offset_right = 91.0
+offset_bottom = 649.0
+color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 399.0
+offset_bottom = 41.0
+scale = Vector2(1.3, 1.3)
+
+[node name="Terminator" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_j2nte")
+icon_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_pih7n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 319)
+
+[connection signal="pressed" from="ColorRect/HBoxContainer/Terminator" to="." method="_on_terminator_pressed"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/Button" to="." method="_on_button_pressed"]

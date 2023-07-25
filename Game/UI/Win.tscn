@@ -64,6 +64,7 @@ grow_vertical = 2
 text = "Exit"
 
 [node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 556.0
 offset_top = 220.0
 offset_right = 596.0
