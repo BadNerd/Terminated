@@ -13,6 +13,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_810m2")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -574.0
+offset_top = -322.0
+offset_right = 576.0
+offset_bottom = 320.0
+color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5

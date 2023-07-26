@@ -37,5 +37,9 @@ func _on_timer_timeout():
 	$Timer.start()
 
 func _on_texture_button_pressed():
-	print(int(shoots))
-	shoots = not shoots
+	if editing:
+		print(int(shoots))
+		shoots = not shoots
+
+func _on_texture_button_2_pressed():
+	if editing: queue_free()

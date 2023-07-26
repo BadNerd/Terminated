@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://tw8e7mp4hq38"]
+
+[ext_resource type="Script" path="res://Level0.gd" id="1_frfn7"]
+[ext_resource type="Texture2D" uid="uid://iyi2enag8n5w" path="res://Assets/FullBackground.png" id="2_q7ph6"]
+[ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="3_8w3hg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4b7u"]
+size = Vector2(1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nyw4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdcki"]
+size = Vector2(92, 827)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbmhu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo2ch"]
+size = Vector2(2335, 20)
+
+[node name="LevelImport" type="Node2D"]
+script = ExtResource("1_frfn7")
+import_json = true
+
+[node name="BG1" type="Sprite2D" parent="."]
+position = Vector2(575, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_q7ph6")
+
+[node name="BG2" type="Sprite2D" parent="."]
+position = Vector2(-605, 320)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("2_q7ph6")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Platform" type="Node" parent="Level"]
+
+[node name="Enemies" type="Node" parent="Level"]
+
+[node name="Exit" type="Area2D" parent="Level"]
+position = Vector2(167, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Exit"]
+scale = Vector2(50, 120)
+shape = SubResource("RectangleShape2D_f4b7u")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Exit"]
+scale = Vector2(50, 120)
+mesh = SubResource("BoxMesh_nyw4m")
+
+[node name="Borders" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(-1171, 326)
+shape = SubResource("RectangleShape2D_xdcki")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(1136, 334)
+shape = SubResource("RectangleShape2D_xdcki")
+
+[node name="Floor" type="Area2D" parent="Level"]
+position = Vector2(4, -77)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Level/Floor"]
+visible = false
+position = Vector2(573, 649.5)
+scale = Vector2(1156, 19)
+mesh = SubResource("BoxMesh_cbmhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor"]
+position = Vector2(-14, 797)
+shape = SubResource("RectangleShape2D_oo2ch")
+
+[node name="Player" parent="." instance=ExtResource("3_8w3hg")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Bar" type="ProgressBar" parent="Camera2D"]
+offset_left = 980.0
+offset_top = 6.0
+offset_right = 1145.0
+offset_bottom = 42.0
+rounded = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(600, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[connection signal="body_entered" from="Level/Exit" to="." method="_on_exit_body_entered"]
+[connection signal="body_entered" from="Level/Floor" to="." method="_on_floor_body_entered"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

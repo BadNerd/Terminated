@@ -13,6 +13,9 @@ func _on_area_2d_body_entered(body):
 	if "Enemy" in body.name:
 		body.queue_free()
 		queue_free()
+	if "Enemies" in body.get_parent().name:
+		body.queue_free()
+		queue_free()
 	if body.name == "Terminator Rocket":
 		body.queue_free()
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0ox8i8m2g65t"]
+[gd_scene load_steps=8 format=3 uid="uid://c0ox8i8m2g65t"]
 
 [ext_resource type="Script" path="res://Editor/Editor.gd" id="1_n6b47"]
 [ext_resource type="Texture2D" uid="uid://bryr8sh3soqm1" path="res://Assets/Platform.png" id="1_pih7n"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://daxgep6i54i7n" path="res://Assets/TerminatorEnemyButton.png" id="2_j2nte"]
 [ext_resource type="PackedScene" uid="uid://bws8rm8ccbh50" path="res://Editor/Level.tscn" id="3_i2ay7"]
 [ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="5_dud7t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1uxxw"]
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -18,15 +20,13 @@ mouse_filter = 2
 script = ExtResource("1_n6b47")
 metadata/_edit_use_anchors_ = true
 
-[node name="Level0" parent="." instance=ExtResource("3_i2ay7")]
+[node name="Level" parent="." instance=ExtResource("3_i2ay7")]
 visible = false
 editing = true
 
 [node name="Blocks" type="Node" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("5_dud7t")]
-position = Vector2(880, 341)
-editing = true
+[node name="Enemies" type="Node" parent="."]
 
 [node name="BGS" type="Node2D" parent="."]
 
@@ -39,6 +39,15 @@ texture = ExtResource("2_atdkf")
 position = Vector2(-605, 320)
 scale = Vector2(3.8, 3.8)
 texture = ExtResource("2_atdkf")
+
+[node name="Player" parent="." instance=ExtResource("5_dud7t")]
+position = Vector2(880, 341)
+editing = true
+
+[node name="Exit" type="MeshInstance2D" parent="."]
+position = Vector2(-1061.87, 260.875)
+scale = Vector2(49.7499, 121.75)
+mesh = SubResource("BoxMesh_1uxxw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-4, -5)
@@ -67,5 +76,19 @@ icon_alignment = 1
 layout_mode = 2
 icon = ExtResource("1_pih7n")
 
+[node name="Save" type="Button" parent="Camera2D"]
+offset_left = 1111.0
+offset_top = 612.0
+offset_right = 1155.0
+offset_bottom = 643.0
+text = "Save"
+
+[node name="FileDialog" type="FileDialog" parent="Camera2D"]
+initial_position = 2
+size = Vector2i(600, 400)
+access = 2
+
 [connection signal="pressed" from="Camera2D/ColorRect/HBoxContainer/Terminator" to="." method="_on_terminator_pressed"]
 [connection signal="pressed" from="Camera2D/ColorRect/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Camera2D/Save" to="." method="_on_save_pressed"]
+[connection signal="file_selected" from="Camera2D/FileDialog" to="." method="_on_file_dialog_file_selected"]
