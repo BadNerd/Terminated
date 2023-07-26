@@ -21,7 +21,7 @@ func _process(delta):
 	#if Input.is_action_just_pressed("ui_cancel"):
 	#	Global.paused = true
 	if not editing:
-		$Camera2D.position.x = min($Player.position.x-200, 0)
+		$Camera2D.position.x = min($Player.position.x-500, 0)
 		$Camera2D/Bar.value = $Player.health
 
 func _on_floor_body_entered(body):
