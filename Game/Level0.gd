@@ -9,17 +9,24 @@ var p_preload = preload("res://UI/Platform.tscn")
 var e_preload = preload("res://Enemy/Enemy.tscn")
 
 func _input(event):
-	if event.is_action_pressed("rocket") and not editing:
+	if event.is_action_pressed("rocket") and not editing and Global.can_shoot:
+		print("Shoot")
 		var r = r_preload.instantiate()
 		r.position.x = level_end
 		r.position.y = $Player.position.y
 		#r.look_at($Player.position)
-		add_child(r)
 		var r1 = r_preload.instantiate()
 		r1.position.x = level_end
 		r1.position.y = $Player.position.y
 		#r1.look_at($Player.position)
+		add_child(r)
 		add_child(r1)
+		var t = Timer.new()
+		t.connect("timeout", _t_timeout)
+		t.wait_time = 2.5
+		t.autostart = true
+		add_child(t)
+		Global.can_shoot = false
 		Global.rocket = true
 
 func _process(delta):
@@ -74,3 +81,6 @@ func _on_file_dialog_file_selected(path):
 	_load(self, path)
 	Global.level = 10
 	$Player.editing = false
+
+func _t_timeout():
+	Global.can_shoot = true

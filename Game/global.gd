@@ -6,6 +6,7 @@ var paused: bool = false
 var path: String = ""
 var explosion = false
 var rocket = false
+var can_shoot = true
 const max_level: int = 1
 
 func teleport_level():
