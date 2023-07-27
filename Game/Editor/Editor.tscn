@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ox8i8m2g65t"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ox8i8m2g65t"]
 
 [ext_resource type="Script" path="res://Editor/Editor.gd" id="1_n6b47"]
 [ext_resource type="Texture2D" uid="uid://bryr8sh3soqm1" path="res://Assets/Platform.png" id="1_pih7n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://daxgep6i54i7n" path="res://Assets/TerminatorEnemyButton.png" id="2_j2nte"]
 [ext_resource type="PackedScene" uid="uid://bws8rm8ccbh50" path="res://Editor/Level.tscn" id="3_i2ay7"]
 [ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="5_dud7t"]
+[ext_resource type="Texture2D" uid="uid://b53kwybg2uu3w" path="res://Assets/ButtonTemplate.png" id="7_4ifqe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1uxxw"]
 
@@ -77,11 +78,17 @@ layout_mode = 2
 icon = ExtResource("1_pih7n")
 
 [node name="Save" type="Button" parent="Camera2D"]
-offset_left = 1111.0
-offset_top = 612.0
-offset_right = 1155.0
-offset_bottom = 643.0
+offset_left = 1089.0
+offset_top = 611.0
+offset_right = 1149.0
+offset_bottom = 642.0
 text = "Save"
+flat = true
+
+[node name="ButtonTemplate" type="Sprite2D" parent="Camera2D/Save"]
+position = Vector2(30, 15)
+scale = Vector2(1, 1.25)
+texture = ExtResource("7_4ifqe")
 
 [node name="FileDialog" type="FileDialog" parent="Camera2D"]
 initial_position = 2

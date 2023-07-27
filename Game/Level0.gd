@@ -15,6 +15,12 @@ func _input(event):
 		r.position.y = $Player.position.y
 		#r.look_at($Player.position)
 		add_child(r)
+		var r1 = r_preload.instantiate()
+		r1.position.x = level_end
+		r1.position.y = $Player.position.y
+		#r1.look_at($Player.position)
+		add_child(r1)
+		Global.rocket = true
 
 func _process(delta):
 	get_tree().paused = Global.paused

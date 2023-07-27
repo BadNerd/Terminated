@@ -4,6 +4,8 @@ var level: int = 0
 var health: int = 100
 var paused: bool = false
 var path: String = ""
+var explosion = false
+var rocket = false
 const max_level: int = 1
 
 func teleport_level():

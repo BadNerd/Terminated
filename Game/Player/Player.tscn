@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://qunr0qvamm83"]
+[gd_scene load_steps=7 format=3 uid="uid://qunr0qvamm83"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hgdft"]
 [ext_resource type="Texture2D" uid="uid://bqq0ldxat5ite" path="res://Assets/Player_t.png" id="2_k7u83"]
+[ext_resource type="AudioStream" uid="uid://by2aqjr1pw6cq" path="res://Assets/Jump.wav" id="3_nq6rm"]
+[ext_resource type="AudioStream" uid="uid://d2beywnwdq4sb" path="res://Assets/Explosion.wav" id="4_afk77"]
+[ext_resource type="AudioStream" uid="uid://b6hrye0m560vv" path="res://Assets/Rocket.wav" id="5_gvynt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_begjn"]
 size = Vector2(72, 77)
@@ -22,6 +25,15 @@ texture = ExtResource("2_k7u83")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, -0.5)
 shape = SubResource("RectangleShape2D_begjn")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nq6rm")
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_afk77")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gvynt")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

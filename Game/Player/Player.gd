@@ -10,6 +10,12 @@ var health = 100
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	if Global.explosion:
+		$Explosion.play()
+		Global.explosion = false
+	if Global.rocket:
+		$Shoot.play()
+		Global.rocket = false
 	if not editing:
 		if health <= 0: get_tree().change_scene_to_file("res://UI/Death.tscn")
 		if not is_on_floor():
@@ -20,6 +26,7 @@ func _physics_process(delta):
 		# Handle Jump.
 		if Input.is_action_just_pressed("ui_accept") and (jump_count < 2 or is_on_floor()):
 			jump_count += 1
+			$Jump.play()
 			velocity.y = JUMP_VELOCITY
 		if Input.is_action_just_pressed("ui_end"):
 			Global.paused = not Global.paused
