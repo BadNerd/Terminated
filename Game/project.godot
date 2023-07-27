@@ -21,6 +21,7 @@ Global="*res://global.gd"
 
 [display]
 
+window/size/resizable=false
 window/main_scene="res://Level0.tscn"
 window/name="Game"
 window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
