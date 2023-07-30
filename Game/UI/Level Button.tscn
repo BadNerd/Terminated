@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://vblb5up2max3"]
+
+[ext_resource type="Texture2D" uid="uid://b53kwybg2uu3w" path="res://Assets/ButtonTemplate.png" id="1_fkg57"]
+[ext_resource type="Script" path="res://Level Button.gd" id="2_2c0hr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i74g3"]
+font_size = 30
+
+[node name="LevelButton" type="NinePatchRect"]
+size_flags_horizontal = 3
+texture = ExtResource("1_fkg57")
+script = ExtResource("2_2c0hr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_i74g3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

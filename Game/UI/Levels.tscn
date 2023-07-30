@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://g7kf4bcd17sh"]
+
+[ext_resource type="Texture2D" uid="uid://dguxkkcguji6j" path="res://Assets/MenuScreen.png" id="2_ow0le"]
+[ext_resource type="PackedScene" uid="uid://vblb5up2max3" path="res://UI/Level Button.tscn" id="3_cndk2"]
+[ext_resource type="PackedScene" uid="uid://wv5pghn66j77" path="res://Level0.tscn" id="4_dt44f"]
+[ext_resource type="PackedScene" uid="uid://bh7wtcmp5qekv" path="res://Level1.tscn" id="5_4y3tl"]
+
+[node name="Levels" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuScreen" type="Sprite2D" parent="."]
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("2_ow0le")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -280.0
+offset_top = -37.0
+offset_right = 375.0
+offset_bottom = 54.0
+theme_override_constants/separation = 98
+alignment = 1
+
+[node name="LevelButton" parent="HBoxContainer" instance=ExtResource("3_cndk2")]
+layout_mode = 2
+mouse_filter = 0
+level_scene = ExtResource("4_dt44f")
+
+[node name="LevelButton2" parent="HBoxContainer" instance=ExtResource("3_cndk2")]
+layout_mode = 2
+mouse_filter = 0
+level_scene = ExtResource("5_4y3tl")
+level_text = 1
