@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://g7kf4bcd17sh"]
+[gd_scene load_steps=6 format=3 uid="uid://g7kf4bcd17sh"]
 
 [ext_resource type="Texture2D" uid="uid://dguxkkcguji6j" path="res://Assets/MenuScreen.png" id="2_ow0le"]
 [ext_resource type="PackedScene" uid="uid://vblb5up2max3" path="res://UI/Level Button.tscn" id="3_cndk2"]
 [ext_resource type="PackedScene" uid="uid://wv5pghn66j77" path="res://Level0.tscn" id="4_dt44f"]
 [ext_resource type="PackedScene" uid="uid://bh7wtcmp5qekv" path="res://Level1.tscn" id="5_4y3tl"]
+[ext_resource type="PackedScene" uid="uid://b5ttd5dmqdkes" path="res://UI/Back Button.tscn" id="5_fqpor"]
 
 [node name="Levels" type="Control"]
 layout_mode = 3
@@ -38,3 +39,10 @@ layout_mode = 2
 mouse_filter = 0
 level_scene = ExtResource("5_4y3tl")
 level_text = 1
+
+[node name="Back Button" parent="." instance=ExtResource("5_fqpor")]
+layout_mode = 1
+offset_left = 441.0
+offset_top = 278.0
+offset_right = 631.0
+offset_bottom = 320.0

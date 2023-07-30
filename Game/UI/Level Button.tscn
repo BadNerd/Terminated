@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vblb5up2max3"]
 
 [ext_resource type="Texture2D" uid="uid://b53kwybg2uu3w" path="res://Assets/ButtonTemplate.png" id="1_fkg57"]
-[ext_resource type="Script" path="res://Level Button.gd" id="2_2c0hr"]
+[ext_resource type="Script" path="res://UI/Level Button.gd" id="2_31aqy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i74g3"]
 font_size = 30
@@ -9,7 +9,7 @@ font_size = 30
 [node name="LevelButton" type="NinePatchRect"]
 size_flags_horizontal = 3
 texture = ExtResource("1_fkg57")
-script = ExtResource("2_2c0hr")
+script = ExtResource("2_31aqy")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0ox8i8m2g65t"]
+[gd_scene load_steps=10 format=3 uid="uid://c0ox8i8m2g65t"]
 
 [ext_resource type="Script" path="res://Editor/Editor.gd" id="1_n6b47"]
 [ext_resource type="Texture2D" uid="uid://bryr8sh3soqm1" path="res://Assets/Platform.png" id="1_pih7n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bws8rm8ccbh50" path="res://Editor/Level.tscn" id="3_i2ay7"]
 [ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="5_dud7t"]
 [ext_resource type="Texture2D" uid="uid://b53kwybg2uu3w" path="res://Assets/ButtonTemplate.png" id="7_4ifqe"]
+[ext_resource type="PackedScene" uid="uid://b5ttd5dmqdkes" path="res://UI/Back Button.tscn" id="8_h8l5c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1uxxw"]
 
@@ -17,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_n6b47")
 metadata/_edit_use_anchors_ = true
 
@@ -95,7 +96,24 @@ initial_position = 2
 size = Vector2i(600, 400)
 access = 2
 
+[node name="Back Button" parent="." instance=ExtResource("8_h8l5c")]
+layout_mode = 1
+offset_left = -200.0
+offset_top = -47.0
+offset_right = -10.0
+offset_bottom = -5.0
+
+[node name="NinePatchRect" parent="Back Button" index="0"]
+offset_left = 27.0
+offset_top = 2.0
+offset_bottom = -6.0
+
+[node name="Label" parent="Back Button/NinePatchRect" index="0"]
+offset_top = 4.0
+
 [connection signal="pressed" from="Camera2D/ColorRect/HBoxContainer/Terminator" to="." method="_on_terminator_pressed"]
 [connection signal="pressed" from="Camera2D/ColorRect/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Camera2D/Save" to="." method="_on_save_pressed"]
 [connection signal="file_selected" from="Camera2D/FileDialog" to="." method="_on_file_dialog_file_selected"]
+
+[editable path="Back Button"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://tw8e7mp4hq38"]
+[gd_scene load_steps=10 format=3 uid="uid://tw8e7mp4hq38"]
 
 [ext_resource type="Script" path="res://Level0.gd" id="1_frfn7"]
 [ext_resource type="Texture2D" uid="uid://iyi2enag8n5w" path="res://Assets/FullBackground.png" id="2_q7ph6"]
 [ext_resource type="PackedScene" uid="uid://qunr0qvamm83" path="res://Player/Player.tscn" id="3_8w3hg"]
+[ext_resource type="PackedScene" uid="uid://b5ttd5dmqdkes" path="res://UI/Back Button.tscn" id="4_dhfxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4b7u"]
 size = Vector2(1, 1)
@@ -90,6 +91,12 @@ size = Vector2i(600, 400)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+
+[node name="Back Button" parent="." instance=ExtResource("4_dhfxj")]
+offset_left = 485.0
+offset_top = 579.0
+offset_right = 675.0
+offset_bottom = 621.0
 
 [connection signal="body_entered" from="Level/Exit" to="." method="_on_exit_body_entered"]
 [connection signal="body_entered" from="Level/Floor" to="." method="_on_floor_body_entered"]
